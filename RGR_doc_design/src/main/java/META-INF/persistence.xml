@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="RgrFiles">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.rgr.project.entity.BouquetEntity</class>
+        <class>com.rgr.project.entity.CardEntity</class>
+        <class>com.rgr.project.entity.CustumerEntity</class>
+        <class>com.rgr.project.entity.DeliveryEntity</class>
+        <class>com.rgr.project.entity.OrderEntity</class>
+        <class>com.rgr.project.entity.FlowersEntity</class>
+        <class>com.rgr.project.entity.PackingEntity</class>
+        <class>com.rgr.project.entity.CustomerEntity</class>
+        <class>com.rgr.project.entity.OrderInfoEntity</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://35.222.247.110:3306/rgr_flower_system"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.username" value=""/>
+            <property name="hibernate.connection.password" value=""/>
+            <property name="hibernate.archive.autodetection" value="class"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+</persistence>
