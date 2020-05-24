@@ -3,22 +3,43 @@ package com.rgr.project.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Customer", schema = "rgr_flower_system", catalog = "")
+@Table(name = "customer", schema = "rgr_flower_system", catalog = "")
 public class CustomerEntity {
-    private int customerId;
+    private Integer customerId;
+    private Integer customerCard;
+    private String customerEmail;
     private String customerName;
     private String customerPhone;
-    private String customerEmail;
-    private int customerCard;
+    private String customerPassword;
 
     @Id
     @Column(name = "customer_id")
-    public int getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    @Basic
+    @Column(name = "customer_card")
+    public Integer getCustomerCard() {
+        return customerCard;
+    }
+
+    public void setCustomerCard(Integer customerCard) {
+        this.customerCard = customerCard;
+    }
+
+    @Basic
+    @Column(name = "customer_email")
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
     @Basic
@@ -42,23 +63,13 @@ public class CustomerEntity {
     }
 
     @Basic
-    @Column(name = "customer_email")
-    public String getCustomerEmail() {
-        return customerEmail;
+    @Column(name = "customer_password")
+    public String getCustomerPassword() {
+        return customerPassword;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
-
-    @Basic
-    @Column(name = "customer_card")
-    public int getCustomerCard() {
-        return customerCard;
-    }
-
-    public void setCustomerCard(int customerCard) {
-        this.customerCard = customerCard;
+    public void setCustomerPassword(String customerPassword) {
+        this.customerPassword = customerPassword;
     }
 
     @Override
@@ -68,12 +79,14 @@ public class CustomerEntity {
 
         CustomerEntity that = (CustomerEntity) o;
 
-        if (customerId != that.customerId) return false;
-        if (customerCard != that.customerCard) return false;
+        if (customerId != null ? !customerId.equals(that.customerId) : that.customerId != null) return false;
+        if (customerCard != null ? !customerCard.equals(that.customerCard) : that.customerCard != null) return false;
+        if (customerEmail != null ? !customerEmail.equals(that.customerEmail) : that.customerEmail != null)
+            return false;
         if (customerName != null ? !customerName.equals(that.customerName) : that.customerName != null) return false;
         if (customerPhone != null ? !customerPhone.equals(that.customerPhone) : that.customerPhone != null)
             return false;
-        if (customerEmail != null ? !customerEmail.equals(that.customerEmail) : that.customerEmail != null)
+        if (customerPassword != null ? !customerPassword.equals(that.customerPassword) : that.customerPassword != null)
             return false;
 
         return true;
@@ -81,11 +94,12 @@ public class CustomerEntity {
 
     @Override
     public int hashCode() {
-        int result = customerId;
+        int result = customerId != null ? customerId.hashCode() : 0;
+        result = 31 * result + (customerCard != null ? customerCard.hashCode() : 0);
+        result = 31 * result + (customerEmail != null ? customerEmail.hashCode() : 0);
         result = 31 * result + (customerName != null ? customerName.hashCode() : 0);
         result = 31 * result + (customerPhone != null ? customerPhone.hashCode() : 0);
-        result = 31 * result + (customerEmail != null ? customerEmail.hashCode() : 0);
-        result = 31 * result + customerCard;
+        result = 31 * result + (customerPassword != null ? customerPassword.hashCode() : 0);
         return result;
     }
 }
