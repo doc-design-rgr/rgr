@@ -12,8 +12,20 @@ public class CustomerEntity {
     private String customerPhone;
     private String customerPassword;
 
+    public CustomerEntity() {
+    }
+
+    public CustomerEntity(String customerName, String customerPhone,
+                          String customerEmail, String customerPassword) {
+        this.customerEmail = customerEmail;
+        this.customerName = customerName;
+        this.customerPhone = customerPhone;
+        this.customerPassword = customerPassword;
+    }
+
     @Id
     @Column(name = "customer_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getCustomerId() {
         return customerId;
     }

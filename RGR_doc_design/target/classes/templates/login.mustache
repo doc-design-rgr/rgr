@@ -1,5 +1,54 @@
 <!DOCTYPE html>
 <html>
-<div>Hello World</div>
+<style>
+    .column {
+        float: left;
+        width: 30%;
+        padding: 10px;
+    }
+
+    .input {
+        margin-bottom: 20px;
+    }
+
+    .center {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+
+    .margin-top {
+        margin-top: 50px;
+        margin-right: 15px;
+    }
+
+    .align {
+        margin-left: 50px;
+    }
+</style>
+<body>
+<div class="center">
+    <div class="column">
+        <h3 class="align">Sign up!</h3>
+        <form method="post" action="/register/profile">
+            <input class="input" type="text" name="customerName" placeholder="Enter your name"/>
+            <input class="input" type="text" name="customerPhone" placeholder="Enter phone"/>
+            <input class="input" type="text" name="customerEmail" placeholder="Enter email"/>
+            <input class="input" type="password" name="customerPassword" placeholder="Enter password"/>
+            <button class="input" type="submit" style="margin-left: 50px">Sign up</button>
+        </form>
+    </div>
+
+    <div class="column margin-top" style="text-align: center"><i><b>OR if you already have an account</b></i></div>
+
+    <div class="column">
+        <h3 class="align">Log in!</h3>
+        <form method="post" action="/profile">
+            <input class="input" type="text" name="customerEmail" placeholder="Enter email"/>
+            <input class="input" type="password" name="customerPassword" placeholder="Enter password"/>
+            <button class="input" type="submit" style="margin-left: 50px">Log in</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
