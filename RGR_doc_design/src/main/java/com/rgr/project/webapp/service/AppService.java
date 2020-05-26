@@ -20,4 +20,8 @@ public class AppService {
     public List<BouquetEntity> getEvent(){
         return bouquetRepo.getAllEvent();
     }
+
+    public List<BouquetEntity> getBouquetBasedEvent(String bouquetEvent){
+        return bouquetRepo.getBouquetBasedEvent(bouquetEvent);
+    }
 }

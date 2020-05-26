@@ -3,25 +3,32 @@
 <h3>Hello</h3>
 
 <form method="get" action="getEvent">
-    <h3>Event</h3>
-    <button type="submit">Search</button>
-
-    <label for="cars">Choose a car:</label>
+    <label for="cars">Choose a event:</label>
 
     <select name="cars" id="cars" >
         {{#event}}
             <option value="{{bouquetEvent}}">{{bouquetEvent}}</option>
         {{/event}}
     </select>
+    <button type="submit">Search</button>
 </form>
 
+<div>
+    {{#customBouquetBasedFilter}}
+        <div>
+            <b>{{bouquetId}}</b>
+            <b>{{bouquetName}}</b>
+            <b>{{price}}</b>
+            <b>{{bouquetEvent}}</b>
+        </div>
+    {{/customBouquetBasedFilter}}
+</div>
 
 <div>
     {{#customBouquet}}
         <div>
             <b>{{bouquetId}}</b>
             <b>{{bouquetName}}</b>
-
             <b>{{price}}</b>
             <b>{{bouquetEvent}}</b>
         </div>
