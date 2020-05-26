@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .button {
+        margin-top: 1.5%;
+    }
+
+    .listPacking {
+        margin-left: 15%;
+        margin-top: -15%;
+    }
+    .addFlowers{
+        margin-top: 3%;
+    }
+
+</style>
+
+<div>
+    <div class="listFlowers">
+        <h1>Available flowers:</h1>
+        {{#flower}}
+            <h4>{{flowerId}}</h4>
+            <h4 style="margin-left: 2%;margin-top: -2.7%;">{{flowerName}}</h4>
+            <h4 style="margin-left: 7%;margin-top: -2.7%;"> {{flowerPrice}}</h4>
+        {{/flower}}
+    </div>
+    <div class="listPacking">
+        <h1>Available types of packing:</h1>
+        {{#packing}}
+            <h4>{{packingId}}</h4>
+            <h4 style="margin-left: 2%;margin-top: -3%;">{{packingType}}</h4>
+            <h4 style="margin-left: 7%;margin-top: -3%;"> {{packingPrice}}</h4>
+        {{/packing}}
+    </div>
+    <hr>
+    <div class="addFlowers">
+        <form method="get" action="addToOrder">
+            <h1>Please write number of flower to add it</h1>
+            <label for="number">Number</label><br>
+            <input type="number" id="number" name="number">
+            <div class="button">
+                <button type="choose" id="add">Add</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="yourOrder">
+        <h4>current order:</h4>
+        {{#currentOrder}}
+            <h4>Order: {{order}}</h4>
+            <h4>Price without bonuses</h4>
+            <h4>Price: {{price}}</h4>
+        {{/currentOrder}}
+    </div>
+
+    <div>
+        <h1>Accept order</h1>
+        <hr>
+        <div>
+            <div class="delivery">
+                <h4>Choose type of delivery:</h4>
+                {{#delivery}}
+                    <h4>{{deliveryId}}</h4>
+                    <h4 style="margin-left: 2%;margin-top: -2.5%;">{{deliveryType}}</h4>
+                    <h4 style="margin-left: 7%;margin-top: -2.5%;"> {{deliveryPrice}}</h4>
+                {{/delivery}}
+            </div>
+            <hr>
+            <form method="post" action="acceptOrder">
+                <h4>Please write number of packing to add it</h4>
+                <label for="number">Packing</label><br>
+                <input type="number" id="number" name="number">
+                <h4>Please write number of delivery to choose</h4>
+                <label for="delivery">Delivery</label><br>
+                <input type="number" id="delivery" name="delivery">
+                <h4>Write number of phone number to accept your order</h4>
+                <label for="phone">Phone number</label><br>
+                <input type="text" id="phone" name="phone">
+                <div class="button">
+                    <button type="choose" id="makeOrder">Accept</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+</body>
+<footer>
+    <h1 style="text-align: center">RGR project for Lviv Polytechnic</h1>
+</footer>
+</html>

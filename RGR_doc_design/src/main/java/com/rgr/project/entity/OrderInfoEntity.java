@@ -14,6 +14,7 @@ public class OrderInfoEntity {
 
     @Id
     @Column(name = "order_id")
+    @GeneratedValue
     public int getOrderId() {
         return orderId;
     }
