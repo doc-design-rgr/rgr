@@ -1,38 +1,79 @@
 <html>
-<body>
-<h3>Hello</h3>
+    <body>
 
-<form method="get" action="getEvent">
-    <label for="cars">Choose a event:</label>
-
-    <select name="cars" id="cars" >
-        {{#event}}
-            <option value="{{bouquetEvent}}">{{bouquetEvent}}</option>
-        {{/event}}
-    </select>
-    <button type="submit">Search</button>
-</form>
-
-<div>
-    {{#customBouquetBasedFilter}}
         <div>
-            <b>{{bouquetId}}</b>
-            <b>{{bouquetName}}</b>
-            <b>{{price}}</b>
-            <b>{{bouquetEvent}}</b>
-        </div>
-    {{/customBouquetBasedFilter}}
-</div>
 
-<div>
-    {{#customBouquet}}
-        <div>
-            <b>{{bouquetId}}</b>
-            <b>{{bouquetName}}</b>
-            <b>{{price}}</b>
-            <b>{{bouquetEvent}}</b>
+            <div>
+                <form method="post" action="addOrderBouquet">
+
+                    <h1>Order</h1>
+
+                    <label for="bouquet">Bouquet id:</label><br>
+                    <input type="number" id="bouquet" name="bouquet">
+
+                    <label for="delivery">Choose a delivery:</label>
+                    <select name="delivery" id="delivery" >
+                        {{#delivery}}
+                            <option value="{{deliveryId}}">Type: {{deliveryType}} \ Price: {{deliveryPrice}}</option>
+                        {{/delivery}}
+                    </select>
+
+                    <label for="packing">Choose a packing:</label>
+                    <select name="packing" id="packing" >
+                        {{#packing}}
+                            <option value="{{packingId}}">Type: {{packingType}} \ Price: {{packingPrice}}</option>
+                        {{/packing}}
+                    </select>
+
+                    <h4>Write number of phone number to accept your order</h4>
+                    <label for="phone">Phone number</label>
+                    <input type="text" id="phone" name="phone">
+
+                    <button type="choose">Accept</button>
+                </form>
+            </div>
+
+            <hr>
+
+            <form method="get" action="getBouquetBasedEvent">
+                <label for="event">Choose a event:</label>
+
+                <select name="event" id="event" >
+                    {{#event}}
+                        <option value="{{bouquetEvent}}">{{bouquetEvent}}</option>
+                    {{/event}}
+                </select>
+                <button type="submit">Search</button>
+            </form>
+
+            <hr>
+
+            <div>
+                <h1>Available types of Bouquet:</h1>
+                <div>
+                    {{#customBouquetBasedFilter}}
+                        <div>
+                            <b>{{bouquetId}}</b>
+                            <b>{{bouquetName}}</b>
+                            <b>{{price}}</b>
+                            <b>{{bouquetEvent}}</b>
+                        </div>
+                    {{/customBouquetBasedFilter}}
+                </div>
+                <div>
+                    {{#customBouquet}}
+                        <div>
+                            <b>{{bouquetId}}</b>
+                            <b>{{bouquetName}}</b>
+                            <b>{{price}}</b>
+                            <b>{{bouquetEvent}}</b>
+                        </div>
+                    {{/customBouquet}}
+                </div>
+            </div>
+
+            <hr>
         </div>
-    {{/customBouquet}}
-</div>
-</body>
+
+    </body>
 </html>

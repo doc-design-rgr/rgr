@@ -979,6 +979,7 @@
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="248" parent="231" name="customer_card">
@@ -1001,106 +1002,111 @@
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="252" parent="231" name="PRIMARY">
+    <column id="252" parent="231" name="customer_password">
+      <Position>6</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="253" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>customer_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="253" parent="232" name="delivery_id">
+    <column id="254" parent="232" name="delivery_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="232" name="delivery_price">
+    <column id="255" parent="232" name="delivery_price">
       <Position>2</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="232" name="delivery_type">
+    <column id="256" parent="232" name="delivery_type">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="256" parent="232" name="PRIMARY">
+    <key id="257" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>delivery_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="257" parent="233" name="flower_id">
+    <column id="258" parent="233" name="flower_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="233" name="flower_name">
+    <column id="259" parent="233" name="flower_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="233" name="flower_price">
+    <column id="260" parent="233" name="flower_price">
       <Position>3</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="260" parent="233" name="PRIMARY">
+    <key id="261" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>flower_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="261" parent="234" name="order_id">
+    <column id="262" parent="234" name="order_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="234" name="bouquet_id">
+    <column id="263" parent="234" name="bouquet_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="234" name="cost">
+    <column id="264" parent="234" name="cost">
       <Position>3</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="234" name="custom_bouquet">
+    <column id="265" parent="234" name="custom_bouquet">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="234" name="customer_id">
+    <column id="266" parent="234" name="customer_id">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="234" name="delivery_id">
+    <column id="267" parent="234" name="delivery_id">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="267" parent="234" name="PRIMARY">
+    <key id="268" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>order_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="268" parent="235" name="packing_id">
+    <column id="269" parent="235" name="packing_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="235" name="packing_price">
+    <column id="270" parent="235" name="packing_price">
       <Position>2</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="235" name="packing_type">
+    <column id="271" parent="235" name="packing_type">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="271" parent="235" name="PRIMARY">
+    <key id="272" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>packing_id</ColNames>
       <Primary>1</Primary>
