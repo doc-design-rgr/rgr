@@ -1,12 +1,15 @@
 package com.rgr.project.webapp.service;
 
 import com.rgr.project.entity.*;
+import com.rgr.project.logic.Bouquet;
 import com.rgr.project.logic.CustomBouquet;
 import com.rgr.project.logic.Waiter;
 import com.rgr.project.webapp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +18,8 @@ import java.util.Map;
 public class AppService {
 
     CustomBouquet customBouquet = new CustomBouquet();
-    Waiter waiter = new Waiter(customBouquet);
+    Waiter waiter;
+    Bouquet bouquetObject;
 
     @Autowired
     private CardRepo cardRepo;
@@ -60,26 +64,37 @@ public class AppService {
     public void makeOrderBouquet(int bouquet, int delivery, int packing, String phone) {
 
         BouquetEntity bouquetEntities = bouquetRepo.getBouquetById(bouquet);
+        bouquetObject = new Bouquet(bouquetEntities.getBouquetName(), bouquetEntities.getPrice());
+        Waiter waiter = new Waiter(bouquetObject);
+
         CustomerEntity customer = customerRepo.getCustomerById(phone);
         CardEntity card = cardRepo.getAllById(customer.getCustomerCard());
         PackingEntity packingObject = packingRepo.getPackingById(packing);
+        DeliveryEntity deliveryEntity = deliverRepo.getDeliveryById(delivery);
 
         //Set cost
         Double priceBouquet = bouquetEntities.getPrice();
-        customBouquet.setPrice(priceBouquet);
-        customBouquet.Packing(packingObject.getPackingPrice().toString());
+        bouquetObject.sumPrice(deliveryEntity.getDeliveryPrice());
+        bouquetObject.Packing(packingObject.getPackingPrice().toString());
 
+        Date date = new Date();
+        /*SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        System.out.println(formatter.format(date));
+        String var = formatter.format(date);*/
         //Set order
         OrderInfoEntity orders = new OrderInfoEntity();
 
         orders.setCustomerId(customer.getCustomerId());
         orders.setBouquetId(bouquetEntities.getBouquetId());
         orders.setDeliveryId(delivery);
-        //orders.setPacking(packing);
+        orders.setPackingId(packing);
+        orders.setOrderDate(date);
 
         if (card.getCardDiscount() != null) {
             orders.setCost(waiter.calculateDiscount(card.getCardDiscount()));
-            customBouquet.setPrice(0);
+//            customBouquet.setPrice(0);
+        }else{
+            orders.setCost(customBouquet.getPrice());
         }
         orderRepo.save(orders);
     }
@@ -117,6 +132,8 @@ public class AppService {
     }
 
     public void makeOrder(int id, int deliveryId, String phone) {
+        Waiter waiter = new Waiter(customBouquet);
+        Date date = new Date();
         Map<String, Object> result = getAll(id, deliveryId, phone);
         CardEntity card = (CardEntity) result.get("card");
         PackingEntity packing = (PackingEntity) result.get("packing");
@@ -128,16 +145,21 @@ public class AppService {
         orders.setCustomerId(customer.getCustomerId());
         orders.setCustomBouquet(1);
         orders.setDeliveryId(deliveryId);
+        orders.setOrderDate(date);
+        orders.setPackingId(packing.getPackingId());
         if (card.getCardDiscount() != null) {
             orders.setCost(waiter.calculateDiscount(card.getCardDiscount()));
             System.out.println(waiter.calculateDiscount(card.getCardDiscount()));
             customBouquet.getFlowers().clear();
             customBouquet.setPrice(0);
+        }else{
+            orders.setCost(customBouquet.getPrice());
         }
         orderRepo.save(orders);
     }
 
     public Map<String, Object> addFlowerToOrder(FlowersEntity flowersEntity) {
+        waiter = new Waiter(customBouquet);
         String name = flowersEntity.getFlowerName();
         double price = flowersEntity.getFlowerPrice();
         waiter.constructBouquet(name, price);

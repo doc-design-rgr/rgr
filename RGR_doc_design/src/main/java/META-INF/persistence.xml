@@ -14,7 +14,7 @@
         <class>com.rgr.project.entity.OrderInfoEntity</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://35.222.247.110:3306/rgr_flower_system"/>
-            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.username" value=""/>
             <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.archive.autodetection" value="class"/>

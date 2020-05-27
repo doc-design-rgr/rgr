@@ -22,7 +22,7 @@ public class AppController {
     @Autowired
     AppService service;
 
-/*    @GetMapping
+   @GetMapping
     public String mainScreen(Map<String, Object> model){
         Iterable<FlowersEntity> flower = service.getFlower();
         Iterable<PackingEntity> packing = service.getPacking();
@@ -31,7 +31,7 @@ public class AppController {
         model.put("packing", packing);
         model.put("delivery", delivery);
         return "custom";
-    }*/
+    }
 
     @GetMapping("showFlowers")
     public String flowerForBouquet (Map<String, Object> model){
@@ -66,8 +66,8 @@ public class AppController {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    @GetMapping
-    public String getAllCustomBouquet (Map<String, Object> model){
+/*    @GetMapping
+    public String getAllBouquet (Map<String, Object> model){
 
         Iterable<BouquetEntity> bouquetEntities = service.getAllBouquetEntity();
         model.put("customBouquet",bouquetEntities);
@@ -75,10 +75,10 @@ public class AppController {
         service.getParameterDropDownBar(model);
 
         return "catalog";
-    }
+    }*/
 
     @GetMapping("getBouquetBasedEvent")
-    public String getAllCustomBouquetBasedToEvent (@RequestParam String event, Map<String, Object> model){
+    public String getAllBouquetBasedToEvent (@RequestParam String event, Map<String, Object> model){
 
         List<BouquetEntity> bouquetEntitiesBasedToEvent = service.getBouquetByEvent(event);
         model.put("customBouquetBasedFilter",bouquetEntitiesBasedToEvent);

@@ -1,9 +1,9 @@
 package com.rgr.project.logic;
 
 public class Waiter {
-    CustomBouquet bouquet;
+    BouquetBuilder bouquet;
 
-    public Waiter(CustomBouquet bouquet) {
+    public Waiter(BouquetBuilder bouquet) {
         this.bouquet = bouquet;
     }
 
