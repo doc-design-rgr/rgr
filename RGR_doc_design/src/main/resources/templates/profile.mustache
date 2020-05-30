@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .column {
+        float: left;
+        width: 30%;
+        padding: 10px;
+    }
+    .input {
+        margin-bottom: 20px;
+    }
+    .center {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+    .margin-top {
+        margin-top: 50px;
+        margin-right: 15px;
+    }
+    .align {
+        margin-left: 50px;
+    }
+</style>
+<body>
+<main class="container">
+    <div class="row">
+        <a role="button" class="btn btn-outline-secondary" th:href=""><i class='fas fa-user-shield'></i> Logout</a>
+    </div>
+    <div>
+        <h1>Welcome Home, user!<h1>
+
+    </div>
+
+    <h1>New Bouquet</h1>
+
+    <form th:action="@{/bouquet/new}" method="post" th:object="${newBouquet}">
+        <div class="form-group row">
+            <label for="universumInput" class="col-sm-1 col-form-label">Select your variant of bouquet</label>
+            <select id="universumInput" class="mb-1" th:field="*{}">
+            </select>
+        </div>
+        <div class="form-group row">
+            <label for="nameInput" class="col-sm-1 col-form-label">For Whom?</label>
+            <input id="nameInput" type="text" class="mb-1" th:field="*{}">
+        </div>
+        <div class="form-group row">
+            <label for="cityInput" class="col-sm-1 col-form-label">Additional Info</label>
+            <input id="cityInput" type="text" class="mb-1"  th:field="*{order.info}">
+        </div>
+
+        <div class="form-group">
+            <p><input role="button" class="btn btn-outline-secondary fas" type="submit" value="&#xf505; Add Bouquet"></p>
+        </div>
+    </form>
+</main>
+</body>
+</html>
