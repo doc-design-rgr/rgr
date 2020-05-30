@@ -1,0 +1,30 @@
+package com.rgr.project.webapp.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+@Controller
+public class BouquetController {
+
+    private BouquetRepositoryStrategy bouquetRepositoryStrategy;
+
+    public BouquetController(BouquetRepositoryStrategy bouquetRepositoryStrategy) {
+        this.bouquetRepositoryStrategy = bouquetRepositoryStrategy;
+    }
+
+    @PostMapping("/bouquet/new")
+    public String addNewBouquet(@ModelAttribute("newBouquet") NewBouquetModel newBouquetModel) {
+        BouquetRepository BouquetRepository = bouquetRepositoryStrategy.findBouquetRepository(newBouquetModel.getRepository());
+        bouquetRepository.addBouquet(newBouquetModel.getBouquet());
+        return "redirect:/login";
+    }
+}
