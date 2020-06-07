@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<style>
+    html {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: rgba(99, 166, 255, 0.52);
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        position: relative;
+        min-height: 850px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .container {
+        width: 80%;
+        height: 100%;
+        margin: 0 auto;
+        background-color: white;
+        padding-top: 40px;
+    }
+
+    .profile_info, .order_history, .make_order, .order_state {
+        width: 80%;
+        margin: auto;
+        height: 200px;
+        border-radius: 20px;
+        border: 2px solid green;
+        margin-bottom: 40px;
+    }
+
+    .order_history {
+        height: 300px;
+    }
+    .order_state {
+        height: 80px;
+        padding-top: 20px;
+    }
+
+    .btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .form {
+        width: 40%;
+    }
+
+    .choose_btn, .create_btn {
+        width: 100%;
+        min-height: 60px;
+        background-color: rgba(99, 166, 255, 0.52);
+        color: rgb(0, 86, 37);
+        border: 2px solid green;
+        border-radius: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        outline: none;
+    }
+    .table_wrapper {
+        width: 95%;
+        margin: auto;
+        height: 150px;
+        overflow: scroll;
+    }
+    th {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    td {
+        font-size: 18px;
+        text-align: center;
+    }
+    footer {
+        height: 40px;
+        background-color: #a69695;
+        padding-top: 25px;
+    }
+    span {
+        display: block;
+        margin: 0 auto;
+        font-size: 18px;
+        text-align: center;
+        color: #dbdad9;
+    }
+</style>
+<body>
+<div class="container">{{#profileBlock}}
+<div class="profile_info">
+    <h1 style="text-align: center; font-size: 42px; color: rgb(0, 86, 37); margin-top: 20px; margin-bottom: 35px">{{customerName}}</h1>
+    <h2 style="text-align: center; font-size: 24px;">📞 {{customerPhone}}</h2>
+    <h2 style="text-align: center; font-size: 24px;">✉️ {{customerEmail}}</h2>
+</div>{{/profileBlock}}
+    {{#message}}
+        <div class="order_state">
+            <h1 style="text-align: center; font-size: 24px; color: rgb(0, 86, 37)">Your order №{{orderId}} is completed!</h1>
+        </div>
+    {{/message}}
+    <div class="order_history">
+        <h1 style="text-align: center; font-size: 42px; color: rgb(0, 86, 37)">Order history</h1>
+        <div class="table_wrapper">
+            <table align="center" width="100%" height="100px">
+                <tr>
+                    <th>Order</th>
+                    <th>Custom</th>
+                    <th>Bouquet</th>
+                    <th>Delivery</th>
+                    <th>Price</th>
+                    <th>Packing type</th>
+                    <th>Date</th>
+                </tr>
+                {{#orders}}
+                    <tr>
+                        <td>{{orderId}}</td>
+                        <td>{{customBouquet}}</td>
+                        <td>{{bouquetName}}</td>
+                        <td>{{deliveryType}}</td>
+                        <td>{{cost}}</td>
+                        <td>{{packingType}}</td>
+                        <td>{{orderDate}}</td>
+                    </tr>
+                {{/orders}}
+            </table>
+        </div>
+    </div>
+    <div class="make_order">
+        <h1 style="text-align: center; font-size: 42px; color: rgb(0, 86, 37)">Make Order</h1>
+        <div class="btn">
+            <form class="form" method="get" action="/chooseCatalog">
+                <button class="choose_btn">Choose from catalog</button>
+            </form>
+            <form class="form" method="get" action="/createCustom">
+                <button class="create_btn">Create own bouquet</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <span>Розрахуново-графічна робота, НУЛП</span>
+    </footer>
+</div>
+</body>
+</html>

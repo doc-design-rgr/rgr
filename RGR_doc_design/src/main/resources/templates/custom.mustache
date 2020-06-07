@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create your bouquet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<style>
+    html {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: rgba(99, 166, 255, 0.52);
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        position: relative;
+        min-height: 850px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .container {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        background-color: white;
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+    .first_line, .third_line {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        box-sizing: border-box;
+        width: 80%;
+        margin: 0 auto;
+        height: 280px;
+        border-radius: 20px;
+        margin-bottom: 40px;
+    }
+    .second_line, .fourth_line {
+        position: relative;
+        box-sizing: border-box;
+        width: 80%;
+        margin: 0 auto;
+        height: 300px;
+        border-radius: 20px;
+        border: 2px solid green;
+        margin-bottom: 40px;
+    }
+    .fourth_line {
+        margin-bottom: 0;
+        height: 370px;
+    }
+    .table_wrapper {
+        width: 100%;
+        height: 200px;
+        overflow: scroll;
+    }
+    .types, .delivery, .flower_id, .current_order {
+        width: 45%;
+        height: 100%;
+        border-radius: 20px;
+        border: 2px solid green;
+    }
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        color: rgb(0, 86, 37);
+    }
+    h2 {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+    table {
+        margin-top: 20px;
+    }
+
+    th {
+        font-size: 24px;
+        padding-bottom: 20px;
+    }
+
+    td {
+        font-size: 18px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    input {
+        display: block;
+        margin: 20px auto 30px;
+        padding-left: 10px;
+        height: 40px;
+        font-size: 18px;
+        border-radius: 10px;
+        border: 1px solid rgba(104,165,255,0.98);
+        outline: none;
+        width: 300px;
+    }
+    .flower_input {
+        width: 80%;
+    }
+    .add_btn, .accept_btn {
+        display: block;
+        margin: auto;
+        width: 40%;
+        height: 60px;
+        font-size: 24px;
+        border-radius: 20px;
+        background-color: rgba(99, 166, 255, 0.52);
+        color: rgb(0, 86, 37);
+        border: 2px solid green;
+        cursor: pointer;
+        outline: none;
+    }
+    .accept_btn {
+        width: 20%;
+        min-width: 90px;
+    }
+    footer {
+        height: 40px;
+        background-color: #a69695;
+        padding-top: 25px;
+        margin-top: 40px;
+    }
+    span {
+        display: block;
+        margin: 0 auto;
+        font-size: 18px;
+        text-align: center;
+        color: #dbdad9;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="second_line">
+            <h1 style="margin-bottom: 20px">Available flowers</h1>
+            <div class="table_wrapper">
+                <table style="margin-top: 0" align="center" width="100%" height="100px">
+                    <tr>
+                        <th>Flower ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                    {{#flower}}
+                        <tr>
+                            <td>{{flowerId}}</td>
+                            <td>{{flowerName}}</td>
+                            <td>{{flowerPrice}}</td>
+                        </tr>
+                    {{/flower}}
+                </table>
+            </div>
+        </div>
+        <div class="third_line">
+            <div class="flower_id">
+                <h1 style="margin-bottom: 50px">Add flower</h1>
+                <form method="get" action="addToOrder">
+                    <input type="number" id="number" name="number" placeholder="Enter flower ID" class="flower_input"/>
+                    <button class="add_btn" type="submit" id="add">Add</button>
+                </form>
+            </div>
+            <div class="current_order">
+                <h1 style="margin-bottom: 30px">Current Order</h1>
+                {{#currentOrder}}
+                    <h2>{{order}}</h2>
+                    <h1 style="margin-bottom: 30px">Price without discount</h1>
+                    <h2>{{price}}</h2>
+                {{/currentOrder}}
+            </div>
+        </div>
+        <div class="first_line">
+            <div class="types">
+                <h1>Packing</h1>
+                <table align="center" width="100%" height="100px">
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                    </tr>
+                    {{#packing}}
+                        <tr>
+                            <td>{{packingId}}</td>
+                            <td>{{packingType}}</td>
+                            <td>{{packingPrice}}</td>
+                        </tr>
+                    {{/packing}}
+                </table>
+            </div>
+            <div class="delivery">
+                <h1>Delivery</h1>
+                <table align="center" width="100%" height="100px">
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                    </tr>
+                    {{#delivery}}
+                        <tr>
+                            <td>{{deliveryId}}</td>
+                            <td>{{deliveryType}}</td>
+                            <td>{{deliveryPrice}}</td>
+                        </tr>
+                    {{/delivery}}
+                </table>
+            </div>
+        </div>
+        <div class="fourth_line">
+            <h1>Accept Order</h1>
+            <form method="post" action="acceptOrder">
+                <input type="number" id="number" name="number" placeholder="Packing ID" />
+                <input type="number" id="delivery" name="delivery" placeholder="Delivery ID" />
+                <input type="text" id="phone" name="phone" placeholder="Confirm your phone number" />
+                <button class="accept_btn" type="submit" id="makeOrder">Accept</button>
+            </form>
+        </div>
+        <footer>
+            <span>Розрахуново-графічна робота, НУЛП</span>
+        </footer>
+    </div>
+</body>
+</html>
