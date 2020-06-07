@@ -3,14 +3,25 @@ package com.rgr.project.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Customer", schema = "rgr_flower_system", catalog = "")
+@Table(name = "customer", schema = "rgr_flower_system", catalog = "")
 public class CustomerEntity {
     private int customerId;
     private String customerName;
     private String customerPhone;
     private String customerEmail;
     private int customerCard;
+    private String customerPassword;
 
+    public CustomerEntity() {
+    }
+
+    public CustomerEntity(String customerName, String customerPhone,
+                          String customerEmail, String customerPassword) {
+        this.customerEmail = customerEmail;
+        this.customerName = customerName;
+        this.customerPhone = customerPhone;
+        this.customerPassword = customerPassword;
+    }
     @Id
     @Column(name = "customer_id")
     public int getCustomerId() {
@@ -57,9 +68,15 @@ public class CustomerEntity {
         return customerCard;
     }
 
+    public void setCustomerCard(Integer customerCard) {
+        this.customerCard = customerCard;
+    }
+
     public void setCustomerCard(int customerCard) {
         this.customerCard = customerCard;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -88,4 +105,16 @@ public class CustomerEntity {
         result = 31 * result + customerCard;
         return result;
     }
+
+    @Basic
+    @Column(name = "customer_password")
+    public String getCustomerPassword() {
+        return customerPassword;
+    }
+
+    public void setCustomerPassword(String customerPassword) {
+        this.customerPassword = customerPassword;
+    }
+
+
 }

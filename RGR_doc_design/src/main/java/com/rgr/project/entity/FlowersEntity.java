@@ -60,4 +60,13 @@ public class FlowersEntity {
         result = 31 * result + (flowerPrice != null ? flowerPrice.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "FlowersEntity{" +
+                "flowerId=" + flowerId +
+                ", flowerName='" + flowerName + '\'' +
+                ", flowerPrice=" + flowerPrice +
+                '}';
+    }
 }
